@@ -1,0 +1,17 @@
+.image-group {
+  display: flex;
+
+  .image-wrapper {
+    flex: 1;
+    margin: 10px;
+
+    img { width: 100%; }
+
+    .image-description {
+      display: flex;
+      align-items: center;
+
+      .image-title { flex: 1; margin-right: 10px; }
+    }
+  }
+}
