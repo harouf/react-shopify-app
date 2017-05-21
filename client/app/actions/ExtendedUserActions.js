@@ -9,7 +9,9 @@ import { UserActions, Analytics } from 'common-frontend'
 export default class ExtendedUserActions {
   constructor() {
     this.generateActions(
-      'setShopifyUserFetchFailed'
+      'setShopifyUserFetchFailed',
+      'setShopifyUserUpdateLoading',
+      'setShopifyUserUpdateSuccess',
     )
   }
 
@@ -20,6 +22,18 @@ export default class ExtendedUserActions {
       UserActions.setExtendedUser(resp)
     }).catch(error => {
       this.setShopifyUserFetchFailed(true)
+    })
+  }
+
+  updateCurrent(token, data) {
+    this.setShopifyUserUpdateLoading(true)
+    this.setShopifyUserUpdateSuccess(false)
+    return ExtendedUserSource.updateCurrent(token, data).then(resp => {
+      this.setShopifyUserUpdateLoading(false)
+      UserActions.setExtendedUser(resp)
+      this.setShopifyUserUpdateSuccess(true)
+    }).catch(error => {
+      this.setShopifyUserUpdateLoading(false)
     })
   }
 

@@ -8,16 +8,16 @@ else if (__RELEASE__)
   api_base = 'TODO https://api.example.com'
 export const API_BASE = api_base
 
-let www_base = 'TODO http://www.example.local:3000'
+let www_base = 'http://localhost:3000'
 if (__PRERELEASE__)
   www_base = 'TODO https://www-stage.example.com'
 else if (__RELEASE__)
   www_base = 'TODO https://www.example.com'
 export const WWW_BASE = www_base
 
-export const APP_NAME = 'TODO App name shown to users like Plug in SEO'
-export const SUPPORT_EMAIL = 'TODO email address'
-export const COMPANY_NAME = 'TODO company name shown to users like Pemberton Rank'
+export const APP_NAME = 'Plug in Speed'
+export const SUPPORT_EMAIL = 'support@haroufltd.com'
+export const COMPANY_NAME = 'Harouf Ltd.'
 
 export const validations = {
   email: 'Please enter valid email address',

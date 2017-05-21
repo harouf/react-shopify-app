@@ -12,6 +12,14 @@ const ExtendedUserSource = {
 
     return instance.post(`${API_BASE}/users/current`)
       .then(res => res.data)
+  },
+  updateCurrent: function(token, data) {
+    const instance = axios.create({
+      headers: { 'Authorization': token }
+    })
+
+    return instance.put(`${API_BASE}/users/update`, data)
+      .then(res => res.data)
   }
 }
 

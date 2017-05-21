@@ -42,7 +42,7 @@ export default class AuthenticateContainer extends React.Component {
   onSignedUp(params) {
     // Boilerplate: Call an action that componentDidUpdate will pick up the result of
     // CheckActions.activate(Enum.CheckTypes.seoproblems.key, Enum.CheckTypes.seoproblems.id, { url: params.website }, this.context.currentUser)
-    this.context.router.push('/dashboard')
+    this.context.router.push('/preferences')
   }
 
   onRequestShopifyAuth() {

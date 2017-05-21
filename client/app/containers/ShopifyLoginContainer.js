@@ -3,6 +3,7 @@ import { ExtendedUserActions } from 'actions'
 import { ExtendedUserStore } from 'stores'
 import { SimpleDialog, Loading } from 'components'
 import Immutable from 'immutable'
+import moment from 'moment'
 import { API_BASE, SUPPORT_EMAIL } from 'consts'
 
 // TODO: move to common
@@ -26,7 +27,8 @@ export default class ShopifyLoginContainer extends React.Component {
 
   componentDidUpdate() {
     if (this.props.shopifyUserFetchFailed === false && this.context.currentUser && this.context.authenticated) {
-      this.context.router.replace('/dashboard')
+      const isFirstSigningByShopify = moment().diff(moment(this.context.currentUser.createdAt), 'seconds') < 10
+      this.context.router.replace(isFirstSigningByShopify ? '/preferences' : '/dashboard')
     }
   }
 
@@ -43,7 +45,7 @@ export default class ShopifyLoginContainer extends React.Component {
   }
 
   render() {
-    if (this.props.shopifyUserFetchFailed === true) {
+    if (true || this.props.shopifyUserFetchFailed === true) {
       return (
         <SimpleDialog
           title='Shopify login failed'
@@ -52,8 +54,7 @@ export default class ShopifyLoginContainer extends React.Component {
           onClose={::this.onDialogClose}
         />
       )
-    } else {
-      return <Loading />
     }
+    return <Loading />
   }
 }

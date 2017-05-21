@@ -15,7 +15,8 @@ import {
   DashboardContainer,
   ShopifyLoginContainer,
   UnsubscribedContainer,
-  AuthenticateContainer
+  AuthenticateContainer,
+  PreferencesContainer,
 } from './containers'
 
 // TODO: could a lot of this code be moved to common, with the routes object passed in / merged?
@@ -75,6 +76,7 @@ export default class Routes extends React.Component {
           <Route path='/users/sign_in/shopify/:token' components={{ header: null, content: ShopifyLoginContainer, footer: null }} onEnter={::this.signOutIfSignedIn} />
           <Route path='/unsubscribed' components={{ header: Header, nav: null, content: UnsubscribedContainer }} />
           <Route path='/admin' components={{ content: AdminContainer }} onEnter={::this.requireAuth} />
+          <Route path='/preferences' components={{ header: null, content: PreferencesContainer, footer: null }} onEnter={::this.requireAuth} />
         </Route>
       </Router>
     )

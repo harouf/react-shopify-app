@@ -27,7 +27,7 @@
     ]
   },
   "common": {
-    "appName": "TODO Your app name shown to users here like Plug in SEO",
+    "appName": "Plugin Speed",
     "analyticKeys": {
       "development": "TODO",
       "production": "TODO"
@@ -38,7 +38,7 @@
       "password",
       "website"
     ],
-    "logo": "TODO add your logo to /assets/images/logo.png",
+    "logo": "https://cdn.shopify.com/s/files/applications/b7dd6d1184a7a42c04dcf34ee4b72745_512x512.png",
     "brandingColour": "#039be5"
   },
   "devDependencies": {
@@ -75,9 +75,11 @@
     "json-loader": "^0.5.4",
     "jsonp": "^0.2.0",
     "material-ui": "^0.16.0",
+    "moment": "^2.17.1",
     "npm-git-install": "^0.2.0",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
+    "prop-types": "^15.5.10",
     "query-string": "^4.2.2",
     "rc-tabs": "^7.0.5",
     "react": "^15.4.0",
@@ -87,8 +89,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.20.2",
     "style-loader": "^0.13.1",
-    "validator": "^5.5.0",
-    "moment": "^2.17.1"
+    "validator": "^5.5.0"
   },
   "gitDependencies": {
     "common-frontend": "https://github.com/pemberton-rank/common-frontend.git#v1.1.9"

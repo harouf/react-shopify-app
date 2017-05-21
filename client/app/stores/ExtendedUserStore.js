@@ -8,7 +8,9 @@ import { ExtendedUserActions } from 'actions'
 export default class ExtendedUserStore {
   constructor() {
     this.state = {
-      shopifyUserFetchFailed: false
+      shopifyUserFetchFailed: false,
+      shopifyUserUpdateLoading: false,
+      shopifyUserUpdateSuccess: false,
     }
     this.bindActions(ExtendedUserActions)
   }
@@ -17,5 +19,13 @@ export default class ExtendedUserStore {
 
   setShopifyUserFetchFailed(shopifyUserFetchFailed) {
     this.setState({ shopifyUserFetchFailed })
+  }
+
+  setShopifyUserUpdateLoading(shopifyUserUpdateLoading) {
+    this.setState({ shopifyUserUpdateLoading })
+  }
+
+  setShopifyUserUpdateSuccess(shopifyUserUpdateSuccess) {
+    this.setState({ shopifyUserUpdateSuccess })
   }
 }
