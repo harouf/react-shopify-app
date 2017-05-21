@@ -9,9 +9,17 @@
 # Note: the lock file should always be present in the filesystem, flock doesn't work by using the file's presence or not
 job_type :rake_with_lock, "cd :path && :environment_variable=:environment flock -n :lock bundle exec rake :task --silent --backtrace :output"
 
-log_root = 'TODO /srv/YOUR_APP_NAME/shared/log/'
+log_root = Rails.root.join('log', 'scheduled_tasks.log')
 
 every 1.hour do
   # example: call your rake task like this
   # rake_with_lock 'reconcile_analytics', output: "#{log_root}reconcile_analytics.log", lock: "#{log_root}reconcile_analytics.lock"
+end
+
+every 6.hours do
+  rake "product:fetch_products"
+end
+
+every 6.hours do
+  rake "product:optimize_images"
 end
