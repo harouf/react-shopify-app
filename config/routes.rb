@@ -15,6 +15,8 @@
   end
 
   post 'users/current'
+  put 'users/update'
+  get 'users/images'
 
   constraints subdomain: ['www', 'www-stage'] do
     get '/', to: 'high_voltage/pages#show', id: 'home'
