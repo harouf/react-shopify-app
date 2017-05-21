@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include UrlValidator
 
   has_many :application_charges
+  has_many :images
 
   enum provider: { shopify: 0 } # null: username/password
 
