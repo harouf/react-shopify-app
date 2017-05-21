@@ -2,18 +2,18 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: 127.0.0.1
-  username: me
+  username: postgres
   pool: 5
 
 development:
   <<: *default
-  database: TODO YOURAPPNAME_development
+  database: plugin_speed_development
 
 production:
   <<: *default
-  database: TODO YOURAPPNAME
+  database: plugin_speed
 
 
 test:
   <<: *default
-  database: TODO YOURAPPNAME_test
+  database: plugin_speed_test

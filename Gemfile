@@ -20,6 +20,8 @@ gem 'liquid'
 gem 'analytics-ruby', '~> 2.0.0', require: 'segment/analytics'
 gem 'activesupport'
 gem 'premailer-rails'
+gem 'image_optim'
+gem 'image_optim_pack'
 
 # environment variables on staging/production
 gem 'figaro'
