@@ -43,6 +43,9 @@ namespace :product do
 
   desc 'Optimize Shopify Product Images'
   task :optimize_images => :environment do
+    if !File.exists?(Rails.root.join('public', 'products', 'optimized_images'))
+      Dir.mkdir Rails.root.join('public', 'products', 'optimized_images')
+    end
     image_optim_lossless = ImageOptim.new(:allow_lossy => false)
     image_optim_lossy = ImageOptim.new(:allow_lossy => true)
     Image.joins(:user).where(:optimized_url => nil, :users => { :image_optim_mode => 'auto' }).each do |image|
