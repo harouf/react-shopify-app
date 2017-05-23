@@ -43,12 +43,17 @@ namespace :product do
 
   desc 'Optimize Shopify Product Images'
   task :optimize_images => :environment do
-    image_optim = ImageOptim.new
-    Image.where(:optimized_url => nil).each do |image|
+    image_optim_lossless = ImageOptim.new(:allow_lossy => false)
+    image_optim_lossy = ImageOptim.new(:allow_lossy => true)
+    Image.joins(:user).where(:optimized_url => nil, :users => { :image_optim_mode => 'auto' }).each do |image|
       download = open(image.url)
       file_path = Rails.root.join('public', 'products', 'optimized_images', image.url.split('/')[-1].split('?')[0])
       IO.copy_stream(download, file_path)
-      image_optim.optimize_image!(file_path)
+      if image.user.image_compress_mode == 'lossless'
+        image_optim_lossless.optimize_image!(file_path)
+      else
+        image_optim_lossy.optimize_image!(file_path)  
+      end
       image.optimized_url = "#{Settings.www_url}/products/optimized_images/#{File.basename(file_path)}"
       image.save
       puts "Image Optimzied For #{image.url}"
